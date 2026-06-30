@@ -1,0 +1,40 @@
+# llm.txt — Machine-Readable Summary for AI Agents
+
+## Site: Cell Phone Protection Compare
+URL: https://tharunsuresh-code.github.io/cellphone-protection-compare/
+Repo: https://github.com/tharunsuresh-code/cellphone-protection-compare
+
+## Purpose
+A comparison tool for cell phone protection benefits across all major US credit cards.
+Helps consumers find which credit cards cover phone damage/theft, compare deductibles,
+claim limits, and identify which premium cards lack this benefit entirely.
+
+## Content Summary
+- 30 credit cards from 7 issuers (Amex, Chase, Wells Fargo, Capital One, US Bank, Barclays, Citi)
+- Filterable by: issuer, annual fee, prepaid coverage, per-claim amount, deductible, card type
+- Sortable table with pros/cons per card
+- Section highlighting premium cards that do NOT include cell phone protection
+- Prepaid coverage analysis: only Wells Fargo cards cover prepaid/MVNO plans
+
+## Key Data Points
+- Lowest deductible: $25 (Wells Fargo cards)
+- Highest per-claim: $1,000 (Chase Ink Business Preferred)
+- Most claims/year: 3 (Chase Ink Business Preferred)
+- Best annual max: $3,000 (Chase Ink Business Preferred)
+- Only prepaid-friendly issuer: Wells Fargo (no exclusion clause)
+- Premium cards WITHOUT protection: Amex Platinum, Chase Sapphire Reserve, Amex Gold,
+  Chase Sapphire Preferred, Citi Strata Premier, Bilt, Capital One Venture,
+  Chase Ink Business Preferred (in this context), Capital One Spark Miles
+
+## Technology
+- Single HTML file, no dependencies, no build step
+- Vanilla HTML/CSS/JavaScript
+- Light/dark mode toggle with localStorage persistence
+- Hosted on GitHub Pages
+
+## Data Freshness
+Credit card benefits change frequently. Always verify current terms with the card issuer
+before filing a claim. If data is outdated, please open an issue or PR on GitHub.
+
+## Contributing
+See AGENTS.md in the repository. All contributions welcome — humans and LLMs alike.
