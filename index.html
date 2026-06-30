@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credit Card Cell Phone Protection — Complete Comparison</title>
+<style>
+  /* ── Dark theme (default) ── */
+  :root {
+    --bg: #0a0a0f;
+    --bg-gradient: radial-gradient(ellipse at top, #14141f 0%, #0a0a0f 100%);
+    --surface: #12121a;
+    --surface-2: #1a1a25;
+    --surface-hover: #1f1f2e;
+    --border: #2a2a3a;
+    --border-hover: #3a3a52;
+    --text: #e8e8ed;
+    --text-muted: #8888a0;
+    --text-dim: #5a5a72;
+    --accent: #6c5ce7;
+    --accent-hover: #7d6ff0;
+    --accent-dim: rgba(108,92,231,0.12);
+    --green: #00c853;
+    --green-dim: rgba(0,200,83,0.12);
+    --red: #ff5252;
+    --red-dim: rgba(255,82,82,0.12);
+    --yellow: #ffd740;
+    --yellow-dim: rgba(255,215,64,0.12);
+    --blue: #448aff;
+    --blue-dim: rgba(68,138,255,0.12);
+    --shadow: 0 4px 24px rgba(0,0,0,0.4);
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.25);
+    --shadow-glow: 0 0 40px rgba(108,92,231,0.08);
+    --radius: 8px;
+    --radius-lg: 12px;
+    --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ── Light theme ── */
+  [data-theme="light"] {
+    --bg: #f5f6fa;
+    --bg-gradient: radial-gradient(ellipse at top, #eef0f8 0%, #f5f6fa 100%);
+    --surface: #ffffff;
+    --surface-2: #eef0f5;
+    --surface-hover: #f0f2f8;
+    --border: #dde0e8;
+    --border-hover: #c5c9d5;
+    --text: #1a1a2e;
+    --text-muted: #6c6f80;
+    --text-dim: #9a9eaf;
+    --accent: #5a47d4;
+    --accent-hover: #6c5ce7;
+    --accent-dim: rgba(90,71,212,0.08);
+    --green: #00a847;
+    --green-dim: rgba(0,168,71,0.1);
+    --red: #e53935;
+    --red-dim: rgba(229,57,53,0.08);
+    --yellow: #f9a825;
+    --yellow-dim: rgba(249,168,37,0.1);
+    --blue: #2979ff;
+    --blue-dim: rgba(41,121,255,0.08);
+    --shadow: 0 4px 24px rgba(0,0,0,0.06);
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+    --shadow-glow: 0 0 40px rgba(90,71,212,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+    background: var(--bg);
+    background-image: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    transition: background var(--transition), color var(--transition);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Theme toggle ── */
+  .theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--accent);
+    transform: scale(1.08);
+    box-shadow: 0 0 16px var(--accent-dim);
+  }
+
+  .theme-toggle:active { transform: scale(0.95); }
+
+  /* Header */
+  header {
+    padding: 48px 0 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+    transition: border-color var(--transition);
+  }
+
+  header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    transition: color var(--transition);
+  }
+
+  header h1 span {
+    color: var(--accent);
+    transition: color var(--transition);
+  }
+
+  header p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 700px;
+    transition: color var(--transition);
+  }
+
+  /* Stats row */
+  .stats {
+    display: flex;
+    gap: 16px;
+    margin: 24px 0 0;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .stat:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+
+  .stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    transition: color var(--transition);
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color var(--transition);
+  }
+
+  /* Filters */
+  .filters {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: end;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .filter-group label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    transition: color var(--transition);
+  }
+
+  .filter-group select,
+  .filter-group input {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    outline: none;
+    transition: all var(--transition);
+    cursor: pointer;
+  }
+
+  .filter-group select:hover,
+  .filter-group input:hover {
+    border-color: var(--border-hover);
+  }
+
+  .filter-group select:focus,
+  .filter-group input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-dim);
+  }
+
+  .filter-reset {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+    align-self: end;
+  }
+
+  .filter-reset:hover {
+    border-color: var(--red);
+    color: var(--red);
+    background: var(--red-dim);
+  }
+
+  .results-count {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    transition: color var(--transition);
+  }
+
+  .results-count strong { color: var(--text); }
+
+  /* Table */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 48px;
+    transition: border-color var(--transition);
+    box-shadow: var(--shadow-sm);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    min-width: 1100px;
+  }
+
+  thead th {
+    background: var(--surface);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition: all var(--transition);
+  }
+
+  thead th:hover { color: var(--text); background: var(--surface-hover); }
+  thead th .sort-arrow { margin-left: 4px; font-size: 0.65rem; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background var(--transition);
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--accent-dim); }
+
+  tbody td {
+    padding: 14px 16px;
+    vertical-align: top;
+  }
+
+  .card-name {
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+    transition: color var(--transition);
+  }
+
+  .card-issuer {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    transition: color var(--transition);
+  }
+
+  .fee {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .fee-free { color: var(--green); }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: all var(--transition);
+  }
+
+  .tag-yes { background: var(--green-dim); color: var(--green); }
+  .tag-no { background: var(--red-dim); color: var(--red); }
+  .tag-premium { background: var(--yellow-dim); color: var(--yellow); }
+  .tag-tier { background: var(--blue-dim); color: var(--blue); }
+
+  .amount {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+
+  .pros-cons {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 280px;
+  }
+
+  .pro, .con {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .pro::before { content: "✓ "; color: var(--green); font-weight: 700; }
+  .con::before { content: "✗ "; color: var(--red); font-weight: 700; }
+
+  /* Premium no-CPP section */
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 48px 0 8px;
+    letter-spacing: -0.02em;
+    transition: color var(--transition);
+  }
+
+  .section-title.warning { color: var(--red); }
+
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    max-width: 700px;
+    transition: color var(--transition);
+  }
+
+  /* Callout */
+  .callout {
+    background: var(--red-dim);
+    border: 1px solid rgba(255,82,82,0.25);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin: 40px 0;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-sm);
+  }
+
+  [data-theme="light"] .callout {
+    border-color: rgba(229,57,53,0.2);
+  }
+
+  .callout h3 {
+    color: var(--red);
+    font-size: 1rem;
+    margin-bottom: 8px;
+    transition: color var(--transition);
+  }
+
+  .callout p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    transition: color var(--transition);
+  }
+
+  .callout strong { color: var(--text); }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    margin-top: 32px;
+    transition: all var(--transition);
+  }
+
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    header h1 { font-size: 1.5rem; }
+    .stats { gap: 8px; }
+    .stat { padding: 10px 14px; }
+    .stat-value { font-size: 1.2rem; }
+    .filters { padding: 16px; }
+    .filter-group { min-width: 140px; }
+    .theme-toggle { width: 38px; height: 38px; font-size: 1rem; top: 12px; right: 12px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle light/dark theme">🌙</button>
+
+<div class="container">
+
+<header>
+  <h1>Credit Card <span>Cell Phone Protection</span> — Complete Comparison</h1>
+  <p>Every US credit card with cell phone protection, side by side. Filters, pros & cons, and which premium cards leave you unprotected.</p>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-value" id="totalCards">30</span>
+      <span class="stat-label">Cards Compared</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value" id="totalIssuers">7</span>
+      <span class="stat-label">Issuers</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">$25</span>
+      <span class="stat-label">Lowest Deductible</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">$1,000</span>
+      <span class="stat-label">Highest Per-Claim</span>
+    </div>
+  </div>
+</header>
+
+<!-- Filters -->
+<div class="filters">
+  <div class="filter-group">
+    <label>Issuer</label>
+    <select id="filterIssuer">
+      <option value="">All Issuers</option>
+      <option value="Amex">American Express</option>
+      <option value="Chase">Chase</option>
+      <option value="Citi">Citi</option>
+      <option value="Wells Fargo">Wells Fargo</option>
+      <option value="Capital One">Capital One</option>
+      <option value="US Bank">US Bank</option>
+      <option value="Barclays">Barclays</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <label>Annual Fee</label>
+    <select id="filterFee">
+      <option value="">Any Fee</option>
+      <option value="0">$0 (No Fee)</option>
+      <option value="low">$1 – $99</option>
+      <option value="mid">$100 – $399</option>
+      <option value="high">$400+</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <label>Prepaid Coverage</label>
+    <select id="filterPrepaid">
+      <option value="">All</option>
+      <option value="yes">Covers Prepaid</option>
+      <option value="no">No Prepaid</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <label>Min Per-Claim</label>
+    <select id="filterClaim">
+      <option value="">Any Amount</option>
+      <option value="800">$800+</option>
+      <option value="1000">$1,000+</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <label>Deductible</label>
+    <select id="filterDeductible">
+      <option value="">Any</option>
+      <option value="25">$25</option>
+      <option value="50">$50 or less</option>
+      <option value="100">$100</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <label>Card Type</label>
+    <select id="filterType">
+      <option value="">All Types</option>
+      <option value="personal">Personal</option>
+      <option value="business">Business</option>
+    </select>
+  </div>
+  <button class="filter-reset" onclick="resetFilters()">Reset</button>
+</div>
+
+<div class="results-count">Showing <strong id="showCount">30</strong> of <strong>30</strong> cards</div>
+
+<!-- Main Table -->
+<div class="table-wrap">
+<table id="mainTable">
+  <thead>
+    <tr>
+      <th onclick="sortTable(0)">Card <span class="sort-arrow">▼</span></th>
+      <th onclick="sortTable(1)">Annual Fee <span class="sort-arrow"></span></th>
+      <th onclick="sortTable(2)">Per Claim <span class="sort-arrow"></span></th>
+      <th onclick="sortTable(3)">Deductible <span class="sort-arrow"></span></th>
+      <th onclick="sortTable(4)">Claims/Yr <span class="sort-arrow"></span></th>
+      <th onclick="sortTable(5)">Annual Max <span class="sort-arrow"></span></th>
+      <th>Prepaid</th>
+      <th>Highlights</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody"></tbody>
+</table>
+</div>
+
+<!-- Premium cards without CPP -->
+<h2 class="section-title warning">⚠ Premium Cards With NO Cell Phone Protection</h2>
+<p class="section-desc">You pay hundreds in annual fees — but drop your phone and you're on your own.</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Card</th>
+      <th>Annual Fee</th>
+      <th>Cell Phone Protection</th>
+      <th>What You Get Instead</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="card-name">Amex Platinum</span><br><span class="card-issuer">American Express</span></td>
+      <td><span class="fee">$895</span></td>
+      <td><span class="tag tag-no">NOT INCLUDED</span></td>
+      <td style="color:var(--text-muted);font-size:0.82rem">Lounge access, hotel credits, airline credits, Fine Hotels + Resorts</td>
+    </tr>
+    <tr>
+      <td><span class="card-name">Chase Sapphire Reserve</span><br><span class="card-issuer">Chase</span></td>
+      <td><span class="fee">$795</span></td>
+      <td><span class="tag tag-no">NOT INCLUDED</span></td>
+      <td style="color:var(--text-muted);font-size:0.82rem">$300 travel credit, Priority Pass lounges, 3x on travel/dining</td>
+    </tr>
+    <tr>
+      <td><span class="card-name">Amex Gold</span><br><span class="card-issuer">American Express</span></td>
+      <td><span class="fee">$325</span></td>
+      <td><span class="tag tag-no">NOT INCLUDED</span></td>
+      <td style="color:var(--text-muted);font-size:0.82rem">4x dining & groceries, Uber Cash, dining credits</td>
+    </tr>
+    <tr>
+      <td><span class="card-name">Chase Sapphire Preferred</span><br><span class="card-issuer">Chase</span></td>
+      <td><span class="fee">$95</span></td>
+      <td><span class="tag tag-no">NOT INCLUDED</span></td>
+      <td style="color:var(--text-muted);font-size:0.82rem">3x travel/dining, 25% portal bonus, trip insurance</td>
+    </tr>
+    <tr>
+      <td><span class="card-name">Citi Strata Premier</span><br><span class="card-issuer">Citi</span></td>
+      <td><span class="fee">$95</span></td>
+      <td><span class="tag tag-no">NOT INCLUDED</span></td>
+      <td style="color:var(--text-muted);font-size:0.82rem">3x travel/dining, $100 annual hotel credit</td>
+    </tr>
+    <tr>
+      <td><span class="card-name">Bilt Mastercard</span><br><span class="card-issuer">Bilt</span></td>
+      <td><span class="fee-free">$0</span></td>
+      <td><span class="tag tag-no">NOT INCLUDED</span></td>
+      <td style="color:var(--text-muted);font-size:0.82rem">3x dining, 2x travel, rent payments with no fees</td>
+    </tr>
+    <tr>
+      <td><span class="card-name">Capital One Venture</span><br><span class="card-issuer">Capital One</span></td>
+      <td><span class="fee">$95</span></td>
+      <td><span class="tag tag-no">NOT INCLUDED</span></td>
+      <td style="color:var(--text-muted);font-size:0.82rem">2x miles on everything, transfer partners, Global Entry credit</td>
+    </tr>
+    <tr>
+      <td><span class="card-name">Chase Ink Business Preferred</span><br><span class="card-issuer">Chase (Business)</span></td>
+      <td><span class="fee">$95</span></td>
+      <td><span class="tag tag-no">NOT INCLUDED</span></td>
+      <td style="color:var(--text-muted);font-size:0.82rem">3x on first $150K/yr on travel, shipping, ads, internet</td>
+    </tr>
+    <tr>
+      <td><span class="card-name">Capital One Spark Miles</span><br><span class="card-issuer">Capital One (Business)</span></td>
+      <td><span class="fee">$95</span></td>
+      <td><span class="tag tag-no">NOT INCLUDED</span></td>
+      <td style="color:var(--text-muted);font-size:0.82rem">2x miles on everything, transfer partners, employee cards</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- Callout -->
+<div class="callout">
+  <h3>The Prepaid Problem</h3>
+  <p>
+    <strong>Every single issuer</strong> requires you to pay a "monthly cellular service bill" with your card.
+    None explicitly cover prepaid, pay-as-you-go, or MVNO plans — even though carriers like AT&T Prepaid
+    and T-Mobile Prepaid <strong>do</strong> generate monthly bills with autopay.
+    The language is intentionally vague, letting issuers deny claims while technically leaving the door open.
+    <br><br>
+    If you're on prepaid, your best bet is <strong>Wells Fargo Autograph</strong> ($0 fee, $25 deductible)
+    or <strong>Chase Freedom Flex</strong> ($0 fee, $50 deductible) — pay the bill with the card and
+    hope the claim sticks. But be prepared to fight.
+  </p>
+</div>
+
+<footer>
+  Data compiled from official benefit guides and issuer websites. Benefits subject to change.
+  Always verify current terms with your card issuer before filing a claim.
+  <br>
+  Built to help consumers make informed decisions.
+</footer>
+
+</div>
+
+<script>
+// ── Theme toggle ──
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '🌙' : '☀️';
+  try { localStorage.setItem('theme', next); } catch(e) {}
+}
+
+// Load saved theme
+try {
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+    document.querySelector('.theme-toggle').textContent = saved === 'dark' ? '🌙' : '☀️';
+  }
+} catch(e) {}
+
+const cards = [
+  // AMEX
+  { name:"Amex Platinum", issuer:"Amex", fee:895, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"premium",
+    highlights:["Covers cracked screens (cosmetic damage)","AIG-backed claims","$800 per incident"], cons:["No prepaid coverage","High $895 annual fee","Secondary to other insurance"] },
+  { name:"Amex Business Platinum", issuer:"Amex", fee:895, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"business", tier:"premium",
+    highlights:["Covers cracked screens","Same terms as personal Platinum"], cons:["No prepaid coverage","High $895 annual fee","Secondary coverage"] },
+  { name:"Amex Gold", issuer:"Amex", fee:325, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"mid",
+    highlights:["Covers cracked screens","Strong dining/grocery earning"], cons:["No prepaid coverage","$325 fee for a non-travel card","Secondary to other insurance"] },
+  { name:"Delta SkyMiles Platinum Amex", issuer:"Amex", fee:350, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"mid",
+    highlights:["Covers cracked screens","Delta companion certificate"], cons:["No prepaid coverage","$350 fee","Tied to Delta loyalty"] },
+  { name:"Delta SkyMiles Reserve Amex", issuer:"Amex", fee:650, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"premium",
+    highlights:["Covers cracked screens","Delta Sky Club access"], cons:["No prepaid coverage","$650 annual fee","Only 2 claims/year"] },
+  { name:"Marriott Bonvoy Brilliant Amex", issuer:"Amex", fee:650, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"premium",
+    highlights:["Covers cracked screens","Free night award","Marriott status"], cons:["No prepaid coverage","$650 fee","Secondary coverage"] },
+  { name:"Delta SkyMiles Platinum Business Amex", issuer:"Amex", fee:350, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"business", tier:"mid",
+    highlights:["Covers cracked screens","Delta companion cert"], cons:["No prepaid coverage","$350 annual fee"] },
+  { name:"Delta SkyMiles Reserve Business Amex", issuer:"Amex", fee:650, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"business", tier:"premium",
+    highlights:["Covers cracked screens","Delta Sky Club"], cons:["No prepaid coverage","$650 fee","Only 2 claims/year"] },
+  { name:"Amex Business Gold", issuer:"Amex", fee:375, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"business", tier:"mid",
+    highlights:["Covers cracked screens","4x on top 2 categories"], cons:["No prepaid coverage","$375 fee","Secondary coverage"] },
+
+  // CHASE
+  { name:"Chase Ink Business Preferred", issuer:"Chase", fee:95, claim:1000, deductible:100, claimsPerYear:3, annualMax:3000, prepaid:"no", type:"business", tier:"mid",
+    highlights:["Highest per-claim: $1,000","Most claims: 3/year","Best annual max: $3,000"], cons:["No prepaid coverage","Highest deductible: $100","Only 4 Chase cards have this"] },
+  { name:"Chase Freedom Flex", issuer:"Chase", fee:0, claim:800, deductible:50, claimsPerYear:2, annualMax:1000, prepaid:"no", type:"personal", tier:"no-fee",
+    highlights:["$0 annual fee","5x rotating categories","World Elite MC benefit"], cons:["No prepaid coverage","$1,000 annual cap","Only 2 claims/year"] },
+  { name:"Chase IHG Premier", issuer:"Chase", fee:99, claim:800, deductible:50, claimsPerYear:2, annualMax:1000, prepaid:"no", type:"personal", tier:"mid",
+    highlights:["$0 annual fee after first year (IHG nights)","1x free night","4x IHG spend"], cons:["No prepaid coverage","$1,000 annual cap","Hotel-locked value"] },
+  { name:"Chase IHG Premier Business", issuer:"Chase", fee:99, claim:800, deductible:50, claimsPerYear:2, annualMax:1000, prepaid:"no", type:"business", tier:"mid",
+    highlights:["Free night award","4x IHG spend"], cons:["No prepaid coverage","$1,000 annual cap","Hotel-locked value"] },
+
+  // WELLS FARGO
+  { name:"Wells Fargo Autograph", issuer:"Wells Fargo", fee:0, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"no", type:"personal", tier:"no-fee",
+    highlights:["Lowest deductible: $25","$0 annual fee","3x travel/dining","No FTF"], cons:["No prepaid coverage","Lower $600 per-claim cap","No cracked screen coverage"] },
+  { name:"Wells Fargo Autograph Journey", issuer:"Wells Fargo", fee:95, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"no", type:"personal", tier:"mid",
+    highlights:["Lowest deductible: $25","5x hotels/travel","$50 annual airline credit"], cons:["No prepaid coverage","Lower $600 per-claim cap","No cracked screen coverage"] },
+  { name:"Wells Fargo Active Cash", issuer:"Wells Fargo", fee:0, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"no", type:"personal", tier:"no-fee",
+    highlights:["Lowest deductible: $25","$0 annual fee","Flat 2% cash back"], cons:["No prepaid coverage","Lower $600 per-claim cap","No cracked screen coverage"] },
+  { name:"Wells Fargo Reflect", issuer:"Wells Fargo", fee:0, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"no", type:"personal", tier:"no-fee",
+    highlights:["Lowest deductible: $25","$0 annual fee","0% intro APR 21 months"], cons:["No prepaid coverage","Lower $600 per-claim cap","No rewards"] },
+
+  // CAPITAL ONE
+  { name:"Capital One Venture X", issuer:"Capital One", fee:395, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"premium",
+    highlights:["$300 travel credit (effectively $95 fee)","Priority Pass + Capital One Lounges","10x hotels via portal"], cons:["No prepaid coverage","$395 sticker price","Secondary coverage"] },
+  { name:"Capital One Venture X Business", issuer:"Capital One", fee:395, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"business", tier:"premium",
+    highlights:["Same benefits as personal","100K bonus miles"], cons:["No prepaid coverage","$395 fee","Secondary coverage"] },
+
+  // US BANK
+  { name:"US Bank Altitude Reserve", issuer:"US Bank", fee:400, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"premium",
+    highlights:["$325 travel/dining credit","Real-Time Rewards","5x on mobile wallet"], cons:["No prepaid coverage","$400 annual fee","US Bank only"] },
+  { name:"US Bank Altitude Connect", issuer:"US Bank", fee:95, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"mid",
+    highlights:["$0 intro first year","4x streaming/travel","Priority Pass (4 visits)"], cons:["No prepaid coverage","$1,600 annual cap","US Bank only"] },
+
+  // BARCLAYS
+  { name:"JetBlue Plus Card", issuer:"Barclays", fee:99, claim:600, deductible:50, claimsPerYear:2, annualMax:1200, prepaid:"no", type:"personal", tier:"mid",
+    highlights:["Free checked bag","5x on JetBlue","6x on groceries"], cons:["No prepaid coverage","Lower $600 per-claim cap","Airline-locked value"] },
+
+  // CITI (discontinued)
+  { name:"Citi Prestige (discontinued)", issuer:"Citi", fee:495, claim:800, deductible:50, claimsPerYear:2, annualMax:1000, prepaid:"no", type:"personal", tier:"premium",
+    highlights:["Was one of the best","4th night hotel benefit"], cons:["No longer available","No prepaid coverage","Citi exited CPP space"] },
+];
+
+let sortCol = -1;
+let sortAsc = true;
+
+function renderTable(data) {
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '';
+  data.forEach(c => {
+    const feeDisplay = c.fee === 0 ? '<span class="fee fee-free">$0</span>' : `<span class="fee">$${c.fee}</span>`;
+    const prosHtml = c.highlights.map(h => `<div class="pro">${h}</div>`).join('');
+    const consHtml = c.cons.map(c => `<div class="con">${c}</div>`).join('');
+
+    tbody.innerHTML += `
+      <tr data-issuer="${c.issuer}" data-fee="${c.fee}" data-prepaid="${c.prepaid}" data-claim="${c.claim}" data-deductible="${c.deductible}" data-type="${c.type}">
+        <td><span class="card-name">${c.name}</span><br><span class="card-issuer">${c.issuer}</span></td>
+        <td>${feeDisplay}</td>
+        <td><span class="amount">$${c.claim.toLocaleString()}</span></td>
+        <td><span class="amount">$${c.deductible}</span></td>
+        <td>${c.claimsPerYear}</td>
+        <td><span class="amount">$${c.annualMax.toLocaleString()}</span></td>
+        <td><span class="tag tag-no">NO</span></td>
+        <td><div class="pros-cons">${prosHtml}${consHtml}</div></td>
+      </tr>`;
+  });
+  document.getElementById('showCount').textContent = data.length;
+}
+
+function applyFilters() {
+  const issuer = document.getElementById('filterIssuer').value;
+  const fee = document.getElementById('filterFee').value;
+  const prepaid = document.getElementById('filterPrepaid').value;
+  const claim = document.getElementById('filterClaim').value;
+  const deductible = document.getElementById('filterDeductible').value;
+  const type = document.getElementById('filterType').value;
+
+  let filtered = cards.filter(c => {
+    if (issuer && c.issuer !== issuer) return false;
+    if (prepaid === "yes" && c.prepaid !== "yes") return false;
+    if (prepaid === "no" && c.prepaid !== "no") return false;
+    if (claim === "800" && c.claim < 800) return false;
+    if (claim === "1000" && c.claim < 1000) return false;
+    if (deductible === "25" && c.deductible !== 25) return false;
+    if (deductible === "50" && c.deductible > 50) return false;
+    if (deductible === "100" && c.deductible !== 100) return false;
+    if (type && c.type !== type) return false;
+    if (fee === "0" && c.fee !== 0) return false;
+    if (fee === "low" && (c.fee < 1 || c.fee > 99)) return false;
+    if (fee === "mid" && (c.fee < 100 || c.fee > 399)) return false;
+    if (fee === "high" && c.fee < 400) return false;
+    return true;
+  });
+
+  renderTable(filtered);
+}
+
+function resetFilters() {
+  document.getElementById('filterIssuer').value = '';
+  document.getElementById('filterFee').value = '';
+  document.getElementById('filterPrepaid').value = '';
+  document.getElementById('filterClaim').value = '';
+  document.getElementById('filterDeductible').value = '';
+  document.getElementById('filterType').value = '';
+  renderTable(cards);
+}
+
+function sortTable(col) {
+  if (sortCol === col) {
+    sortAsc = !sortAsc;
+  } else {
+    sortCol = col;
+    sortAsc = true;
+  }
+
+  const keys = ['name','fee','claim','deductible','claimsPerYear','annualMax'];
+  const key = keys[col];
+
+  cards.sort((a,b) => {
+    let va = a[key], vb = b[key];
+    if (typeof va === 'string') return sortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+    return sortAsc ? va - vb : vb - va;
+  });
+
+  applyFilters();
+}
+
+// Attach filter events
+document.querySelectorAll('.filters select').forEach(sel => {
+  sel.addEventListener('change', applyFilters);
+});
+
+// Initial render
+renderTable(cards);
+</script>
+</body>
+</html>
