@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -451,7 +451,7 @@
 </style>
 </head>
 <body>
-<button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle light/dark theme">🌙</button>
+<button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle light/dark theme">☀️</button>
 
 <div class="container">
 
@@ -637,14 +637,18 @@
 <div class="callout">
   <h3>The Prepaid Problem</h3>
   <p>
-    <strong>Every single issuer</strong> requires you to pay a "monthly cellular service bill" with your card.
-    None explicitly cover prepaid, pay-as-you-go, or MVNO plans — even though carriers like AT&T Prepaid
-    and T-Mobile Prepaid <strong>do</strong> generate monthly bills with autopay.
-    The language is intentionally vague, letting issuers deny claims while technically leaving the door open.
+    Most issuers require you to pay a "monthly cellular service bill" with your card, which typically
+    excludes prepaid, pay-as-you-go, or MVNO plans (Mint Mobile, Google Fi, etc.) — even though carriers
+    like AT&T Prepaid and T-Mobile Prepaid <strong>do</strong> generate monthly bills with autopay.
     <br><br>
-    If you're on prepaid, your best bet is <strong>Wells Fargo Autograph</strong> ($0 fee, $25 deductible)
-    or <strong>Chase Freedom Flex</strong> ($0 fee, $50 deductible) — pay the bill with the card and
-    hope the claim sticks. But be prepared to fight.
+    <strong>Wells Fargo is the exception.</strong> Their cell phone protection benefit guide does
+    <strong>not</strong> include a prepaid exclusion clause, making Wells Fargo cards
+    (Autograph, Active Cash, Reflect) the best option for prepaid plan users.
+    The <strong>Wells Fargo Autograph</strong> ($0 fee, $25 deductible) is the top pick.
+    <br><br>
+    Chase, Amex, Capital One, US Bank, and Barclays all require a "monthly cellular service bill"
+    and will deny claims on prepaid plans. <strong>Chase Freedom Flex does not cover prepaid</strong>
+    despite being frequently recommended elsewhere — claims will be denied.
   </p>
 </div>
 
@@ -668,13 +672,11 @@ function toggleTheme() {
   try { localStorage.setItem('theme', next); } catch(e) {}
 }
 
-// Load saved theme
+// Load saved theme (default: light)
 try {
-  const saved = localStorage.getItem('theme');
-  if (saved) {
-    document.documentElement.setAttribute('data-theme', saved);
-    document.querySelector('.theme-toggle').textContent = saved === 'dark' ? '🌙' : '☀️';
-  }
+  const saved = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  document.querySelector('.theme-toggle').textContent = saved === 'dark' ? '🌙' : '☀️';
 } catch(e) {}
 
 const cards = [
@@ -709,14 +711,14 @@ const cards = [
     highlights:["Free night award","4x IHG spend"], cons:["No prepaid coverage","$1,000 annual cap","Hotel-locked value"] },
 
   // WELLS FARGO
-  { name:"Wells Fargo Autograph", issuer:"Wells Fargo", fee:0, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"no", type:"personal", tier:"no-fee",
-    highlights:["Lowest deductible: $25","$0 annual fee","3x travel/dining","No FTF"], cons:["No prepaid coverage","Lower $600 per-claim cap","No cracked screen coverage"] },
-  { name:"Wells Fargo Autograph Journey", issuer:"Wells Fargo", fee:95, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"no", type:"personal", tier:"mid",
-    highlights:["Lowest deductible: $25","5x hotels/travel","$50 annual airline credit"], cons:["No prepaid coverage","Lower $600 per-claim cap","No cracked screen coverage"] },
-  { name:"Wells Fargo Active Cash", issuer:"Wells Fargo", fee:0, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"no", type:"personal", tier:"no-fee",
-    highlights:["Lowest deductible: $25","$0 annual fee","Flat 2% cash back"], cons:["No prepaid coverage","Lower $600 per-claim cap","No cracked screen coverage"] },
-  { name:"Wells Fargo Reflect", issuer:"Wells Fargo", fee:0, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"no", type:"personal", tier:"no-fee",
-    highlights:["Lowest deductible: $25","$0 annual fee","0% intro APR 21 months"], cons:["No prepaid coverage","Lower $600 per-claim cap","No rewards"] },
+  { name:"Wells Fargo Autograph", issuer:"Wells Fargo", fee:0, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"yes", type:"personal", tier:"no-fee",
+    highlights:["Lowest deductible: $25","$0 annual fee","3x travel/dining","No FTF","Prepaid plans covered"], cons:["Lower $600 per-claim cap","No cracked screen coverage"] },
+  { name:"Wells Fargo Autograph Journey", issuer:"Wells Fargo", fee:95, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"yes", type:"personal", tier:"mid",
+    highlights:["Lowest deductible: $25","5x hotels/travel","$50 annual airline credit","Prepaid plans covered"], cons:["Lower $600 per-claim cap","No cracked screen coverage"] },
+  { name:"Wells Fargo Active Cash", issuer:"Wells Fargo", fee:0, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"yes", type:"personal", tier:"no-fee",
+    highlights:["Lowest deductible: $25","$0 annual fee","Flat 2% cash back","Prepaid plans covered"], cons:["Lower $600 per-claim cap","No cracked screen coverage"] },
+  { name:"Wells Fargo Reflect", issuer:"Wells Fargo", fee:0, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"yes", type:"personal", tier:"no-fee",
+    highlights:["Lowest deductible: $25","$0 annual fee","0% intro APR 21 months","Prepaid plans covered"], cons:["Lower $600 per-claim cap","No rewards"] },
 
   // CAPITAL ONE
   { name:"Capital One Venture X", issuer:"Capital One", fee:395, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"premium",
@@ -758,7 +760,7 @@ function renderTable(data) {
         <td><span class="amount">$${c.deductible}</span></td>
         <td>${c.claimsPerYear}</td>
         <td><span class="amount">$${c.annualMax.toLocaleString()}</span></td>
-        <td><span class="tag tag-no">NO</span></td>
+        <td><span class="tag ${c.prepaid === "yes" ? "tag-yes" : "tag-no"}">${c.prepaid === "yes" ? "YES" : "NO"}</span></td>
         <td><div class="pros-cons">${prosHtml}${consHtml}</div></td>
       </tr>`;
   });
