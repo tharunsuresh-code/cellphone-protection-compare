@@ -465,6 +465,20 @@
 
   .callout strong { color: var(--text); }
 
+  /* Glossary superscript links */
+  sup a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.6rem;
+    font-weight: 700;
+    vertical-align: super;
+    line-height: 0;
+    margin-left: 1px;
+    opacity: 0.7;
+    transition: opacity var(--transition);
+  }
+  sup a:hover { opacity: 1; }
+
   /* Footer */
   footer {
     border-top: 1px solid var(--border);
@@ -592,11 +606,11 @@
     <tr>
       <th onclick="sortTable(0)">Card <span class="sort-arrow">▼</span></th>
       <th onclick="sortTable(1)">Annual Fee <span class="sort-arrow"></span></th>
-      <th onclick="sortTable(2)">Per Claim <span class="sort-arrow"></span></th>
-      <th onclick="sortTable(3)">Deductible <span class="sort-arrow"></span></th>
+      <th onclick="sortTable(2)">Per Claim<sup><a href="#g-perclaim" title="Per-Claim Cap">[?]</a></sup> <span class="sort-arrow"></span></th>
+      <th onclick="sortTable(3)">Deductible<sup><a href="#g-deductible" title="Deductible">[?]</a></sup> <span class="sort-arrow"></span></th>
       <th onclick="sortTable(4)">Claims/Yr <span class="sort-arrow"></span></th>
-      <th onclick="sortTable(5)">Annual Max <span class="sort-arrow"></span></th>
-      <th>Prepaid</th>
+      <th onclick="sortTable(5)">Annual Max<sup><a href="#g-annualmax" title="Annual Max">[?]</a></sup> <span class="sort-arrow"></span></th>
+      <th>Prepaid<sup><a href="#g-prepaid" title="Prepaid Plan">[?]</a></sup></th>
       <th>Highlights</th>
     </tr>
   </thead>
@@ -682,7 +696,7 @@
   <h3>The Prepaid Problem</h3>
   <p>
     Most issuers require you to pay a "monthly cellular service bill" with your card, which typically
-    excludes prepaid, pay-as-you-go, or MVNO plans (Mint Mobile, Google Fi, etc.) — even though carriers
+    excludes prepaid<sup><a href="#g-prepaid">[?]</a></sup>, pay-as-you-go, or MVNO<sup><a href="#g-mvno">[?]</a></sup> plans (Mint Mobile, Google Fi, etc.) — even though carriers
     like AT&T Prepaid and T-Mobile Prepaid <strong>do</strong> generate monthly bills with autopay.
     <br><br>
     <strong>Wells Fargo is the exception.</strong> Their cell phone protection benefit guide does
@@ -700,14 +714,14 @@
 <div class="glossary" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin:40px 0;box-shadow:var(--shadow-sm)">
   <h3 style="font-size:1rem;font-weight:700;margin-bottom:12px">Glossary</h3>
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px 24px;font-size:0.82rem">
-    <div><strong style="color:var(--accent)">CPP</strong> — Cell Phone Protection. Coverage for damage or theft of your phone when you pay your cell phone bill with the card.</div>
-    <div><strong style="color:var(--accent)">FTF</strong> — Foreign Transaction Fee. A surcharge (typically 3%) on purchases made outside the US. "No FTF" means no such fee.</div>
-    <div><strong style="color:var(--accent)">MVNO</strong> — Mobile Virtual Network Operator. A carrier that leases tower access from major networks (e.g., Mint Mobile, Google Fi, Visible, US Mobile). Often prepaid.</div>
-    <div><strong style="color:var(--accent)">Deductible</strong> — The amount you pay out-of-pocket per claim before the benefit kicks in.</div>
-    <div><strong style="color:var(--accent)">Per-Claim Cap</strong> — The maximum payout for a single approved claim.</div>
-    <div><strong style="color:var(--accent)">Annual Max</strong> — The total maximum payout across all claims in a 12-month period.</div>
-    <div><strong style="color:var(--accent)">Prepaid Plan</strong> — A cell phone plan paid in advance rather than billed monthly (AT&T Prepaid, T-Mobile Prepaid, Mint Mobile, etc.).</div>
-    <div><strong style="color:var(--accent)">Secondary Coverage</strong> — Pays only after other insurance (e.g., AppleCare, carrier insurance) has been exhausted.</div>
+    <div id="g-cpp"><strong style="color:var(--accent)">CPP</strong> — Cell Phone Protection. Coverage for damage or theft of your phone when you pay your cell phone bill with the card.</div>
+    <div id="g-ftf"><strong style="color:var(--accent)">FTF</strong> — Foreign Transaction Fee. A surcharge (typically 3%) on purchases made outside the US. "No FTF" means no such fee.</div>
+    <div id="g-mvno"><strong style="color:var(--accent)">MVNO</strong> — Mobile Virtual Network Operator. A carrier that leases tower access from major networks (e.g., Mint Mobile, Google Fi, Visible, US Mobile). Often prepaid.</div>
+    <div id="g-deductible"><strong style="color:var(--accent)">Deductible</strong> — The amount you pay out-of-pocket per claim before the benefit kicks in.</div>
+    <div id="g-perclaim"><strong style="color:var(--accent)">Per-Claim Cap</strong> — The maximum payout for a single approved claim.</div>
+    <div id="g-annualmax"><strong style="color:var(--accent)">Annual Max</strong> — The total maximum payout across all claims in a 12-month period.</div>
+    <div id="g-prepaid"><strong style="color:var(--accent)">Prepaid Plan</strong> — A cell phone plan paid in advance rather than billed monthly (AT&T Prepaid, T-Mobile Prepaid, Mint Mobile, etc.).</div>
+    <div id="g-secondary"><strong style="color:var(--accent)">Secondary Coverage</strong> — Pays only after other insurance (e.g., AppleCare, carrier insurance) has been exhausted.</div>
   </div>
 </div>
 
@@ -741,63 +755,63 @@ try {
 const cards = [
   // AMEX
   { name:"Amex Platinum", issuer:"Amex", fee:895, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"premium",
-    highlights:["Covers cracked screens (cosmetic damage)","AIG-backed claims","$800 per incident"], cons:["No prepaid coverage","High $895 annual fee","Secondary to other insurance"] },
+    highlights:["Covers cracked screens (cosmetic damage)","AIG-backed claims","$800 per incident"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"High $895 annual fee",'Secondary<sup><a href=\'#g-secondary\'>[?]</a></sup> to other insurance'] },
   { name:"Amex Business Platinum", issuer:"Amex", fee:895, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"business", tier:"premium",
-    highlights:["Covers cracked screens","Same terms as personal Platinum"], cons:["No prepaid coverage","High $895 annual fee","Secondary coverage"] },
+    highlights:["Covers cracked screens","Same terms as personal Platinum"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"High $895 annual fee",'Secondary<sup><a href=\'#g-secondary\'>[?]</a></sup> coverage'] },
   { name:"Amex Gold", issuer:"Amex", fee:325, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"mid",
-    highlights:["Covers cracked screens","Strong dining/grocery earning"], cons:["No prepaid coverage","$325 fee for a non-travel card","Secondary to other insurance"] },
+    highlights:["Covers cracked screens","Strong dining/grocery earning"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"$325 fee for a non-travel card",'Secondary<sup><a href=\'#g-secondary\'>[?]</a></sup> to other insurance'] },
   { name:"Delta SkyMiles Platinum Amex", issuer:"Amex", fee:350, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"mid",
-    highlights:["Covers cracked screens","Delta companion certificate"], cons:["No prepaid coverage","$350 fee","Tied to Delta loyalty"] },
+    highlights:["Covers cracked screens","Delta companion certificate"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"$350 fee","Tied to Delta loyalty"] },
   { name:"Delta SkyMiles Reserve Amex", issuer:"Amex", fee:650, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"premium",
-    highlights:["Covers cracked screens","Delta Sky Club access"], cons:["No prepaid coverage","$650 annual fee","Only 2 claims/year"] },
+    highlights:["Covers cracked screens","Delta Sky Club access"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"$650 annual fee","Only 2 claims/year"] },
   { name:"Marriott Bonvoy Brilliant Amex", issuer:"Amex", fee:650, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"premium",
-    highlights:["Covers cracked screens","Free night award","Marriott status"], cons:["No prepaid coverage","$650 fee","Secondary coverage"] },
+    highlights:["Covers cracked screens","Free night award","Marriott status"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"$650 fee",'Secondary<sup><a href=\'#g-secondary\'>[?]</a></sup> coverage'] },
   { name:"Delta SkyMiles Platinum Business Amex", issuer:"Amex", fee:350, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"business", tier:"mid",
-    highlights:["Covers cracked screens","Delta companion cert"], cons:["No prepaid coverage","$350 annual fee"] },
+    highlights:["Covers cracked screens","Delta companion cert"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"$350 annual fee"] },
   { name:"Delta SkyMiles Reserve Business Amex", issuer:"Amex", fee:650, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"business", tier:"premium",
-    highlights:["Covers cracked screens","Delta Sky Club"], cons:["No prepaid coverage","$650 fee","Only 2 claims/year"] },
+    highlights:["Covers cracked screens","Delta Sky Club"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"$650 fee","Only 2 claims/year"] },
   { name:"Amex Business Gold", issuer:"Amex", fee:375, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"business", tier:"mid",
-    highlights:["Covers cracked screens","4x on top 2 categories"], cons:["No prepaid coverage","$375 fee","Secondary coverage"] },
+    highlights:["Covers cracked screens","4x on top 2 categories"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"$375 fee",'Secondary<sup><a href=\'#g-secondary\'>[?]</a></sup> coverage'] },
 
   // CHASE
   { name:"Chase Ink Business Preferred", issuer:"Chase", fee:95, claim:1000, deductible:100, claimsPerYear:3, annualMax:3000, prepaid:"no", type:"business", tier:"mid",
-    highlights:["Highest per-claim: $1,000","Most claims: 3/year","Best annual max: $3,000"], cons:["No prepaid coverage","Highest deductible: $100","Only 4 Chase cards have this"] },
+    highlights:["Highest per-claim: $1,000","Most claims: 3/year","Best annual max: $3,000"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"Highest deductible: $100","Only 4 Chase cards have this"] },
   { name:"Chase Freedom Flex", issuer:"Chase", fee:0, claim:800, deductible:50, claimsPerYear:2, annualMax:1000, prepaid:"no", type:"personal", tier:"no-fee",
-    highlights:["$0 annual fee","5x rotating categories","World Elite MC benefit"], cons:["No prepaid coverage","$1,000 annual cap","Only 2 claims/year"] },
+    highlights:["$0 annual fee","5x rotating categories","World Elite MC benefit"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"$1,000 annual cap","Only 2 claims/year"] },
   { name:"Chase IHG Premier", issuer:"Chase", fee:99, claim:800, deductible:50, claimsPerYear:2, annualMax:1000, prepaid:"no", type:"personal", tier:"mid",
-    highlights:["$0 annual fee after first year (IHG nights)","1x free night","4x IHG spend"], cons:["No prepaid coverage","$1,000 annual cap","Hotel-locked value"] },
+    highlights:["$0 annual fee after first year (IHG nights)","1x free night","4x IHG spend"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"$1,000 annual cap","Hotel-locked value"] },
   { name:"Chase IHG Premier Business", issuer:"Chase", fee:99, claim:800, deductible:50, claimsPerYear:2, annualMax:1000, prepaid:"no", type:"business", tier:"mid",
-    highlights:["Free night award","4x IHG spend"], cons:["No prepaid coverage","$1,000 annual cap","Hotel-locked value"] },
+    highlights:["Free night award","4x IHG spend"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"$1,000 annual cap","Hotel-locked value"] },
 
   // WELLS FARGO
   { name:"Wells Fargo Autograph", issuer:"Wells Fargo", fee:0, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"yes", type:"personal", tier:"no-fee",
-    highlights:["Lowest deductible: $25","$0 annual fee","3x travel/dining","No FTF","Prepaid plans covered"], cons:["Lower $600 per-claim cap","No cracked screen coverage"] },
+    highlights:["Lowest deductible: $25","$0 annual fee","3x travel/dining",'No FTF<sup><a href=\'#g-ftf\'>[?]</a></sup>','Prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> plans covered'], cons:["Lower $600 per-claim cap","No cracked screen coverage"] },
   { name:"Wells Fargo Autograph Journey", issuer:"Wells Fargo", fee:95, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"yes", type:"personal", tier:"mid",
-    highlights:["Lowest deductible: $25","5x hotels/travel","$50 annual airline credit","Prepaid plans covered"], cons:["Lower $600 per-claim cap","No cracked screen coverage"] },
+    highlights:["Lowest deductible: $25","5x hotels/travel","$50 annual airline credit",'Prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> plans covered'], cons:["Lower $600 per-claim cap","No cracked screen coverage"] },
   { name:"Wells Fargo Active Cash", issuer:"Wells Fargo", fee:0, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"yes", type:"personal", tier:"no-fee",
-    highlights:["Lowest deductible: $25","$0 annual fee","Flat 2% cash back","Prepaid plans covered"], cons:["Lower $600 per-claim cap","No cracked screen coverage"] },
+    highlights:["Lowest deductible: $25","$0 annual fee","Flat 2% cash back",'Prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> plans covered'], cons:["Lower $600 per-claim cap","No cracked screen coverage"] },
   { name:"Wells Fargo Reflect", issuer:"Wells Fargo", fee:0, claim:600, deductible:25, claimsPerYear:2, annualMax:1200, prepaid:"yes", type:"personal", tier:"no-fee",
-    highlights:["Lowest deductible: $25","$0 annual fee","0% intro APR 21 months","Prepaid plans covered"], cons:["Lower $600 per-claim cap","No rewards"] },
+    highlights:["Lowest deductible: $25","$0 annual fee","0% intro APR 21 months",'Prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> plans covered'], cons:["Lower $600 per-claim cap","No rewards"] },
 
   // CAPITAL ONE
   { name:"Capital One Venture X", issuer:"Capital One", fee:395, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"premium",
-    highlights:["$300 travel credit (effectively $95 fee)","Priority Pass + Capital One Lounges","10x hotels via portal"], cons:["No prepaid coverage","$395 sticker price","Secondary coverage"] },
+    highlights:["$300 travel credit (effectively $95 fee)","Priority Pass + Capital One Lounges","10x hotels via portal"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"$395 sticker price",'Secondary<sup><a href=\'#g-secondary\'>[?]</a></sup> coverage'] },
   { name:"Capital One Venture X Business", issuer:"Capital One", fee:395, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"business", tier:"premium",
-    highlights:["Same benefits as personal","100K bonus miles"], cons:["No prepaid coverage","$395 fee","Secondary coverage"] },
+    highlights:["Same benefits as personal","100K bonus miles"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"$395 fee",'Secondary<sup><a href=\'#g-secondary\'>[?]</a></sup> coverage'] },
 
   // US BANK
   { name:"US Bank Altitude Reserve", issuer:"US Bank", fee:400, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"premium",
-    highlights:["$325 travel/dining credit","Real-Time Rewards","5x on mobile wallet"], cons:["No prepaid coverage","$400 annual fee","US Bank only"] },
+    highlights:["$325 travel/dining credit","Real-Time Rewards","5x on mobile wallet"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"$400 annual fee","US Bank only"] },
   { name:"US Bank Altitude Connect", issuer:"US Bank", fee:95, claim:800, deductible:50, claimsPerYear:2, annualMax:1600, prepaid:"no", type:"personal", tier:"mid",
-    highlights:["$0 intro first year","4x streaming/travel","Priority Pass (4 visits)"], cons:["No prepaid coverage","$1,600 annual cap","US Bank only"] },
+    highlights:["$0 intro first year","4x streaming/travel","Priority Pass (4 visits)"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"$1,600 annual cap","US Bank only"] },
 
   // BARCLAYS
   { name:"JetBlue Plus Card", issuer:"Barclays", fee:99, claim:600, deductible:50, claimsPerYear:2, annualMax:1200, prepaid:"no", type:"personal", tier:"mid",
-    highlights:["Free checked bag","5x on JetBlue","6x on groceries"], cons:["No prepaid coverage","Lower $600 per-claim cap","Airline-locked value"] },
+    highlights:["Free checked bag","5x on JetBlue","6x on groceries"], cons:['No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"Lower $600 per-claim cap","Airline-locked value"] },
 
   // CITI (discontinued)
   { name:"Citi Prestige (discontinued)", issuer:"Citi", fee:495, claim:800, deductible:50, claimsPerYear:2, annualMax:1000, prepaid:"no", type:"personal", tier:"premium",
-    highlights:["Was one of the best","4th night hotel benefit"], cons:["No longer available","No prepaid coverage","Citi exited CPP space"] },
+    highlights:["Was one of the best","4th night hotel benefit"], cons:["No longer available",'No prepaid<sup><a href=\'#g-prepaid\'>[?]</a></sup> coverage',"Citi exited CPP space"] },
 ];
 
 let sortCol = -1;
